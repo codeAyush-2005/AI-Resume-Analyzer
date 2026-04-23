@@ -25,54 +25,106 @@ An intelligent, full-stack web application designed to help job seekers optimize
 
 ## Getting Started
 
-### Prerequisites
+### ✅ Prerequisites
 
-1. **Node.js** (v18+) for the frontend.
-2. **Python** (v3.9+) for the backend.
-3. **Ollama**: Download and install [Ollama](https://ollama.com/).
-   - Pull the required model by running:
-     ```bash
-     ollama run llama3
-     ```
-     *(Note: Replace `llama3` with whatever specific model is configured in your `ollama_analyzer.py` file).*
+Make sure you have the following installed before running the project:
 
-### Installation & Running the App
+| Tool | Version | Purpose |
+|------|---------|---------|
+| [Python](https://www.python.org/downloads/) | v3.9+ | Backend runtime |
+| [Node.js](https://nodejs.org/) | v18+ | Frontend runtime |
+| [Ollama](https://ollama.com/) | Latest | Local LLM engine |
 
-#### 1. Start the Backend server
+---
 
-Open a terminal and navigate to the backend directory:
+## 🚀 Running the Project
+
+> You need **3 things running** at the same time: Ollama, the Backend, and the Frontend.  
+> Use **separate terminals** for each.
+
+---
+
+### Step 1 — Start Ollama (AI Engine)
+
+Open a terminal and run:
+
 ```bash
+ollama run llama3
+```
+
+> ⚠️ Keep this terminal open. Ollama must be running for the AI analysis to work.  
+> First-time users: this will download the LLaMA 3 model (~4GB). Subsequent starts are instant.
+
+---
+
+### Step 2 — Start the Backend (FastAPI)
+
+Open a **new terminal** and run the following commands:
+
+```bash
+# Navigate to the backend folder
 cd backend
 
-# Create a virtual environment (recommended)
-python -m venv venv
-# Activate the virtual environment
-# On Windows:
-venv\Scripts\activate
-# On Mac/Linux:
-source venv/bin/activate
+# Activate the virtual environment (Windows)
+.\venv\Scripts\activate
 
-# Install dependencies (if you have a requirements.txt)
-pip install fastapi uvicorn pydantic PyPDF2 python-multipart
+# If venv doesn't exist yet, create it first:
+# python -m venv venv
+# Then activate and install dependencies:
+# pip install fastapi uvicorn pydantic PyPDF2 python-multipart ollama
 
-# Start the FastAPI server
+# Start the backend server
 python main.py
 ```
-*The backend will be running at http://localhost:8000*
 
-#### 2. Start the Frontend server
+✅ Backend is ready when you see:
+```
+Uvicorn running on http://0.0.0.0:8000
+```
 
-Open a new terminal and navigate to the frontend directory:
+---
+
+### Step 3 — Start the Frontend (Next.js)
+
+Open another **new terminal** and run:
+
 ```bash
+# Navigate to the frontend folder
 cd frontend
 
-# Install Node dependencies
+# Install dependencies (first time only)
 npm install
 
 # Start the development server
 npm run dev
 ```
-*The frontend will be running at http://localhost:3000*
+
+✅ Frontend is ready when you see:
+```
+Local: http://localhost:3000
+```
+
+---
+
+### Step 4 — Open the App
+
+1. Open **http://localhost:3000** in your browser
+2. Upload your **PDF resume**
+3. Paste the **Job Description** you're applying for
+4. Click **Analyze** and wait a few seconds for the AI to respond
+5. Review your **ATS score**, **missing keywords**, and **improvement suggestions**!
+
+---
+
+## ⚠️ Common Issues
+
+| Problem | Cause | Fix |
+|---------|-------|-----|
+| `ModuleNotFoundError` | venv not activated | Run `.\venv\Scripts\activate` in `backend/` |
+| `ollama: command not found` | Ollama not installed | Download from [ollama.com](https://ollama.com) |
+| `Connection refused` on analyze | Backend not running | Make sure Step 2 is running on port 8000 |
+| Blank page on frontend | Frontend not started | Make sure Step 3 is running on port 3000 |
+| Slow analysis response | LLM processing | Normal — LLaMA 3 can take 10–60 seconds locally |
 
 ## Usage
 
