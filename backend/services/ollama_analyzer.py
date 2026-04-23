@@ -55,8 +55,6 @@ def analyze_resume(resume_text: str, jd_text: str = None) -> dict:
     except json.JSONDecodeError as e:
         return {
             "error": "Failed to parse JSON response from Ollama",
-            "raw_response": response['message']['content']
-        }
             "raw_response": response['message']['content'],
             "decode_error": str(e)
         }
