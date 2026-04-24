@@ -11,7 +11,7 @@ An intelligent, full-stack web application designed to help job seekers optimize
 - **AI Feedback**: Generates detailed, actionable suggestions to improve your resume content using a locally run large language model (Ollama).
 - **Modern UI**: A responsive, real-time dashboard built with Next.js and Tailwind CSS.
 
-## Tech Stack
+## Tech Stack Used
 
 **Frontend:**
 - [Next.js 16](https://nextjs.org/) (React Framework)
